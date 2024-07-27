@@ -21,18 +21,18 @@ class Scoreboard(Turtle):
         
     def reset_game(self):
         self.clear()
+        self.update_high_score()
         self.score = 0
         self.update_scoreboard()
-        self.update_high_score()
         
     def get_high_score(self):
-        with open('day-20_snake_game\\snake_game\\day-20_snake_game\\data.txt', mode= 'r') as file:
+        with open('python_projects\\day-20_snake_game\\data.txt', mode= 'r') as file:
             return int(file.read())
             
     def update_high_score(self):
         if self.score > self.high_score:
             self.high_score = self.score
-            with open('day-20_snake_game\\snake_game\\day-20_snake_game\\data.txt', mode= 'w') as file:
+            with open('python_projects\\day-20_snake_game\\data.txt', mode= 'w') as file:
                 file.write(str(self.high_score))
                 
     # def game_over(self):

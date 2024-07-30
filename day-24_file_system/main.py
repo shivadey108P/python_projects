@@ -2,7 +2,7 @@
 #     file.write('\nI have added a new line to the file.')
 
 
-with open('day-24_file_system\\my_file.txt') as file:
+with open('./day-24_file_system\\my_file.txt') as file:
     contents = int(file.read())
     print(contents)
     print(type(contents))

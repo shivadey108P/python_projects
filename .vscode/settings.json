@@ -1,9 +1,12 @@
 {
-    "workbench.colorTheme": "Default Dark Modern",
+    "workbench.colorTheme": "GitHub Dark Colorblind (Beta)",
     "workbench.preferredHighContrastColorTheme": "Default Dark Modern",
     "workbench.preferredHighContrastLightColorTheme": "Default Dark Modern",
     "workbench.preferredLightColorTheme": "Default Dark Modern",
     "workbench.iconTheme": "material-icon-theme",
     "jupyter.themeMatplotlibPlots": true,
-    "material-icon-theme.enableLogging": true
+    "material-icon-theme.enableLogging": true,
+    "cSpell.words": [
+        "pady"
+    ]
 }

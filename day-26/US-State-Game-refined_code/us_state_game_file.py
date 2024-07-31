@@ -8,7 +8,7 @@ screen.addshape(image)
 turtle.shape(image)
 
 guessed_states = []
-data = pd.read_csv('./day-25/US-State-Game/50_states.csv')
+data = pd.read_csv('./day-26/US-State-Game/50_states.csv')
 all_states =  data.state.to_list()
 while len(guessed_states) < 50:
     answer_state = screen.textinput(title=f"{len(guessed_states)}/50 States Correct", prompt="What's another state name? ").title()

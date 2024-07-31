@@ -7,6 +7,7 @@
     "jupyter.themeMatplotlibPlots": true,
     "material-icon-theme.enableLogging": true,
     "cSpell.words": [
+        "padx",
         "pady"
     ]
 }

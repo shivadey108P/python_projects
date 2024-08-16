@@ -1,8 +1,9 @@
 import requests
 import datetime as dt
+import os
 
 USER_NAME = 'shivanarayandey'
-TOKEN = 'JDF342FN23JD2J3'
+TOKEN = os.environ.get('PIXELA_TOKEN')
 pixela_endpoints = 'https://pixe.la/v1/users'
 GRAPH_ID = 'walk10k'
 

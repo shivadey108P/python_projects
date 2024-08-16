@@ -12,6 +12,15 @@ news_endpoint = 'https://newsapi.org/v2/everything'
 TWILIO_SID = os.environ.get('TWILIO_ACC_SID')
 TWILIO_API_KEY = os.environ.get('TWILIO_AUTH_TOKEN')
 
+STOCK = "TSLA"
+COMPANY_NAME = "Tesla Inc"
+stock_api_key = 'I91IOMN8ZU75WDXS'
+stock_end_point = 'https://www.alphavantage.co/query'
+news_stock_api_key = '370f8998395944c290c16d5ca2b3e9e9'
+news_endpoint = 'https://newsapi.org/v2/everything'
+TWILIO_SID = 'AC4f89ccbd989f1225b5bae33c40dc0b1f'
+TWILIO_API_KEY = 'e2e968482281b053dd3663b4728febc3'
+
 news_parameters = {
     'apiKey' : news_stock_api_key,
     'qInTitle' : COMPANY_NAME

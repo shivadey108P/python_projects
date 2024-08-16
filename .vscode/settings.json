@@ -10,6 +10,7 @@
         "padx",
         "pady",
         "Promodoro",
-        "pyperclip"
+        "pyperclip",
+        "sheety"
     ]
 }

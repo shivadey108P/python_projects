@@ -29,7 +29,7 @@ parameters_exercise = {
 }
 
 today = dt.datetime.now()
-today = dt.datetime(year=2024, month=8, day=9)
+today = dt.datetime(year=2024, month=8, day=15)
 date_now = today.strftime("%d/%m/%Y")
 time_now = today.strftime("%X")
 

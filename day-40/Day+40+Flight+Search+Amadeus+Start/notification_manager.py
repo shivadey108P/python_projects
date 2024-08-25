@@ -1,19 +1,12 @@
 import os
 from twilio.rest import Client
-import os
-from dotenv import load_dotenv
-
-load_dotenv()
-
-SID = os.environ['TWILIO_SID']
-AUTH_TOKEN = os.environ["TWILIO_AUTH_TOKEN"]
 
 # Using a .env file to retrieve the phone numbers and tokens.
 
 class NotificationManager:
 
     def __init__(self):
-        self.client = Client(SID, AUTH_TOKEN)
+        self.client = Client(os.environ['TWILIO_SID'], os.environ["TWILIO_AUTH_TOKEN"])
 
     def send_sms(self, message_body):
         """
@@ -22,10 +15,13 @@ class NotificationManager:
         a predefined virtual number (provided by Twilio) to your own "verified" number.
         It logs the unique SID (Session ID) of the message, which can be used to
         verify that the message was sent successfully.
+
         Parameters:
         message_body (str): The text content of the SMS message to be sent.
+
         Returns:
         None
+
         Notes:
         - Ensure that `TWILIO_VIRTUAL_NUMBER` and `TWILIO_VERIFIED_NUMBER` are correctly set up in
         your environment (.env file) and correspond with numbers registered and verified in your
@@ -35,9 +31,9 @@ class NotificationManager:
         initialized.
         """
         message = self.client.messages.create(
-            from_='+12562033607',
+            from_=os.environ["TWILIO_VIRTUAL_NUMBER"],
             body=message_body,
-            to='+918555914966'
+            to=os.environ["TWILIO_VIRTUAL_NUMBER"]
         )
         # Prints if successfully sent.
         print(message.sid)
@@ -46,8 +42,8 @@ class NotificationManager:
     # https://console.twilio.com/us1/develop/sms/try-it-out/whatsapp-learn
     def send_whatsapp(self, message_body):
         message = self.client.messages.create(
-            from_='whatsapp:+14155238886',
+            from_=f'whatsapp:{os.environ["TWILIO_WHATSAPP_NUMBER"]}',
             body=message_body,
-            to='whatsapp:+918555914966'
+            to=f'whatsapp:{os.environ["TWILIO_VERIFIED_NUMBER"]}'
         )
         print(message.sid)

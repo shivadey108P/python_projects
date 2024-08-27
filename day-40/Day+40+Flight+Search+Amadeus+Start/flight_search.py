@@ -104,7 +104,7 @@ class FlightSearch:
 
         return code
 
-    def check_flights(self, origin_city_code, destination_city_code, from_time, to_time):
+    def check_flights(self, origin_city_code, destination_city_code, from_time, to_time, is_direct=True):
         """
         Searches for flight options between two cities on specified departure and return dates
         using the Amadeus API.
@@ -133,7 +133,7 @@ class FlightSearch:
             "departureDate": from_time.strftime("%Y-%m-%d"),
             "returnDate": to_time.strftime("%Y-%m-%d"),
             "adults": 1,
-            "nonStop": "true",
+            "nonStop": "true" if is_direct else 'false',
             "currencyCode": "GBP",
             "max": "10",
         }
@@ -147,9 +147,9 @@ class FlightSearch:
         if response.status_code != 200:
             print(f"check_flights() response code: {response.status_code}")
             print("There was a problem with the flight search.\n"
-                  "For details on status codes, check the API documentation:\n"
-                  "https://developers.amadeus.com/self-service/category/flights/api-doc/flight-offers-search/api"
-                  "-reference")
+                "For details on status codes, check the API documentation:\n"
+                "https://developers.amadeus.com/self-service/category/flights/api-doc/flight-offers-search/api"
+                "-reference")
             print("Response body:", response.text)
             return None
 

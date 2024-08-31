@@ -1,0 +1,20 @@
+*{
+    background-color: black;
+    align-content: center;
+}
+
+.my_motive{
+    width: 50%;
+    margin-left: 25%;
+    margin-top: 100px;
+    font-family: "Libre Baskerville", serif;
+    color: white;
+    text-align: center;
+
+}
+
+img{
+    border: 5px solid white;
+    width: 100%;
+    border-radius: 50%;
+}

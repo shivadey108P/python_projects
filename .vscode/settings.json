@@ -7,11 +7,13 @@
     "jupyter.themeMatplotlibPlots": true,
     "material-icon-theme.enableLogging": true,
     "cSpell.words": [
+        "addrs",
         "dotenv",
         "padx",
         "pady",
         "Promodoro",
         "pyperclip",
-        "sheety"
+        "sheety",
+        "spotipy"
     ]
 }

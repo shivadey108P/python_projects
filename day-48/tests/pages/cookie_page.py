@@ -9,9 +9,16 @@ class CookiePage:
         self.upgrades = (By.CSS_SELECTOR, '#store div')
         self.money = (By.ID, 'money')
         self.cps = (By.ID, 'cps')
+        self.all_prices = (By.CSS_SELECTOR, '#store b')
         
     def get_url(self, url):
         self.driver.get(url)
+        
+    def get_money_data(self):
+        return self.driver.find_element(*self.money).text
+    
+    def get_store_prices(self):
+        return self.driver.find_elements(*self.upgrades)
         
     def click_cookie(self):
         self.driver.find_element(*self.cookie).click()
@@ -20,6 +27,6 @@ class CookiePage:
         self.driver.quit()
     
     def wait_for_element(self, element):
-        WebDriverWait(self.driver, 10).until(
+        WebDriverWait(self.driver, 20).until(
     EC.visibility_of_element_located(element)
 )

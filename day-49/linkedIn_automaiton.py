@@ -139,6 +139,8 @@ for _ in list_of_jobs:
         count_of_employee = driver.find_element(*employee_count).text.strip()
         if '10K+ employees' in count_of_employee:
             save_job = True
+        else:
+            save_job = False
         driver.back()
         wait_for_element(driver=driver, element=company_name)
         time.sleep(3)

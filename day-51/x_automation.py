@@ -28,9 +28,12 @@ class InternetSpeedXBot:
         self.chrome_options.add_experimental_option("prefs", self.preferences)
         self.chrome_options.add_experimental_option('detach', True)
         self.driver = webdriver.Chrome(options= self.chrome_options)
-        self.up = 0
-        self.down = 0
+        self.up = 90
+        self.down = 113
+        self.privacy_message = (By.ID,"onetrust-group-container")
         self.reject_all_policy_btn = (By.ID, "onetrust-reject-all-handler")
+        self.continue_btn = (By.ID, "onetrust-accept-btn-handler")
+        self.message_after_test = (By.XPATH, "//h3[text()='How does your download speed compare with your expectations?']")
         self.close_notification = (By.CSS_SELECTOR, ".notification a")
         self.test_go_btn = (By.CLASS_NAME, "start-text")
         self.download_speed_results = (By.XPATH, "//span[@class='result-data-large number result-data-value download-speed']")
@@ -39,6 +42,7 @@ class InternetSpeedXBot:
         self.sign_in = (By.XPATH, "//span[text()='Sign in']")
         self.email_input = (By.NAME, "text")
         self.next_btn_in_email = (By.XPATH, "//span[text()='Next']")
+        self.close_welcome_message = (By.XPATH, "//button[@role='button' and @data-testid='xMigrationBottomBar']/div/span ")
         self.password_input = (By.NAME, "password")
         self.login_btn = (By.XPATH, "//span[text()='Log in']")
         self.post_input = (By.XPATH, "//div[@class='public-DraftStyleDefault-block public-DraftStyleDefault-ltr']")
@@ -63,18 +67,24 @@ class InternetSpeedXBot:
     def get_internet_speed(self):
         # self.driver.maximize_window()
         self.driver.get('https://www.speedtest.net/')
-        self.wait_for_element(element=self.test_go_btn, timeout=120)
-        time.sleep(3)
-        self.driver.find_element(*self.reject_all_policy_btn).click()
-        time.sleep(2)
-        self.driver.find_element(*self.close_notification).click()
-        time.sleep(2)
+        self.wait_for_element(element=self.privacy_message, timeout=10)
+        time.sleep(1)
+        try:
+            self.driver.find_element(*self.reject_all_policy_btn).click()
+            time.sleep(2)
+            self.driver.find_element(*self.close_notification).click()
+            time.sleep(2)
+        except Exception as e:
+            print('"Reject" button was not there, looking for "continue" button.')
+            self.driver.find_element(*self.continue_btn).click()
+            time.sleep(2)
         self.go_button = self.driver.find_element(*self.test_go_btn)
         # self.scroll_to_element(self.go_button)
         # time.sleep(1)
         self.go_button.click()
-        time.sleep(60)
-        self.wait_for_element(element=self.download_speed_results, timeout=20)
+        time.sleep(35)
+        self.wait_for_element(element=self.download_speed_results, timeout=60)
+        time.sleep(2)
         self.down = float(self.driver.find_element(*self.download_speed_results).text)
         self.up = float(self.driver.find_element(*self.upload_speed_results).text)
         print(f"download speed = {self.down}")
@@ -83,13 +93,15 @@ class InternetSpeedXBot:
         
     
     def post_at_x_to_network_provider(self):
-        if PROMISED_DOWN > self.down and PROMISED_UP > self.up:
+        if PROMISED_DOWN > self.down or PROMISED_UP > self.up:
             self.message = f"Hey Internet Provider, why is my internet speed {self.down}down/{self.up}up when I pay for 100down/100up?"
             try:
                 self.driver = webdriver.Chrome(options=self.chrome_options)
                 self.driver.maximize_window()
                 self.driver.get("https://x.com/")
-                self.wait_for_element(element=self.sign_in)
+                self.wait_for_element(element=self.close_welcome_message)
+                self.driver.find_element(*self.close_welcome_message).click()
+                time.sleep(2)
                 self.driver.find_element(*self.sign_in).click()
                 self.wait_for_element(element=self.email_input)
                 time.sleep(1)
@@ -117,5 +129,5 @@ class InternetSpeedXBot:
             
     
 bot = InternetSpeedXBot()
-bot.get_internet_speed()
+# bot.get_internet_speed()
 bot.post_at_x_to_network_provider()

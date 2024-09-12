@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>My Blog</title>
+    <link rel="stylesheet" href="static/style.css" />
+  </head>
+  <body>
+    {% for blog_post in posts: %}
+    <h1>{{blog_post['title']}}</h1>
+    <h3>{{blog_post['subtitle']}}</h3>
+    {% endfor %}
+  </body>
+  <footer>
+    <p>&copy; {{year}} Shiva Dey</p>
+  </footer>
+</html>

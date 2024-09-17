@@ -15,5 +15,6 @@
         "pyperclip",
         "sheety",
         "spotipy"
-    ]
+    ],
+    "liveServer.settings.multiRootWorkspaceName": "Python_Projects"
 }

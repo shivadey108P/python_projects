@@ -17,7 +17,6 @@ app = Flask(__name__)
 
 all_books = []
 
-
 @app.route('/')
 def home():
     global all_books

@@ -20,12 +20,26 @@ all_books = []
 
 @app.route('/')
 def home():
-    pass
+    global all_books
+    return render_template('index.html', books = all_books)
 
 
-@app.route("/add")
+@app.route("/add", methods = ['GET','POST'])
 def add():
-    pass
+    if request.method == 'POST':
+        global all_books
+        book_name = request.form['title']
+        author_name = request.form['author']
+        rating = request.form['rating']
+        new_book ={
+                'title': book_name,
+                'author': author_name,
+                'rating': rating
+            }
+        all_books.append(new_book)
+    
+        return redirect(url_for('home'))
+    return render_template('add.html')
 
 
 if __name__ == "__main__":

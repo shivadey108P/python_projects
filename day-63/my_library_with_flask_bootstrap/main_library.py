@@ -28,10 +28,12 @@ class EditBook(FlaskForm):
     rating = DecimalField(label='Rating', validators=[DataRequired(message="You can't leave this field empty")])
     submit = SubmitField(label='Edit Details')
     
-app.config['SQLALCHEMY_DATABASE_URI'] = "sqlite:///new-books-collection.db"
+basedir = os.path.abspath(os.path.dirname(__file__))
+app.config['SQLALCHEMY_DATABASE_URI'] = f"sqlite:///{os.path.join(basedir, 'new-books-collection.db')}"
 app.secret_key = os.environ['SECRET_KEY']
 bootstrap = Bootstrap5(app=app)
 db = SQLAlchemy(model_class=Base)
+
 
 db.init_app(app)
 
@@ -46,8 +48,8 @@ class Book(db.Model):
     def __repr__(self):
         return f"<Book {self.title}>"
     
-with app.app_context():
-    db.create_all()
+# with app.app_context():
+#     db.create_all()
     
 def add_data(title, author, rating):    
     with app.app_context():
@@ -77,7 +79,7 @@ def update_data(id, title, author, rating):
 def send_data():
     with app.app_context():
         global all_books
-        result = db.session.execute(db.select(Book).order_by(Book.title))
+        result = db.session.execute(db.select(Book))
         books = result.scalars()
         all_books.clear()
         for book in books:
@@ -128,6 +130,7 @@ def edit():
         book_author = edit_book.author.data
         book_rating = edit_book.rating.data
         update_data(id=book_id,author=book_author, rating=book_rating, title=book_title)
+        return redirect(url_for('edit', id=book_id, saved=True))
     return render_template('edit.html', form = edit_book)
 
 if __name__ == "__main__":

@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+
+{% block title %}Edit Movies{% endblock %}
+
+{% block content %}
+<div class="content">
+  <h1 class="heading">Movie Title</h1>
+    <p class="description">Edit Movie Rating</p>
+  </div>
+
+    <!-- Modal -->
+    {% if request.args.get('saved') %}
+    <div class="modal fade show" id="modalSheet" tabindex="-1" aria-labelledby="confirmationModalLabel" aria-hidden="true" style="display: block;">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content rounded-4 shadow">
+                <div class="modal-header border-bottom-0">
+                    <h1 class="modal-title fs-5">Details Saved</h1>
+                    <a href="{{ url_for('edit') }}" class="btn-close" aria-label="Close"></a>
+                </div>
+                <div class="modal-body py-0">
+                    <p>Your changes have been saved! Would you like to stay on this page or return to your library?</p>
+                </div>
+                <div class="modal-footer flex-column align-items-stretch w-100 gap-2 pb-3 border-top-0">
+                    <a href="{{ url_for('home') }}" class="btn btn-lg btn-primary">Go to Movies Page</a>
+                    {%block stay_page%}
+                    <a href="{{url_for('edit')}}" class="btn btn-lg btn-secondary">Stay</a>
+                    {%endblock%}
+                </div>
+            </div>
+        </div>
+    </div>
+    {% endif %}
+{% endblock %}

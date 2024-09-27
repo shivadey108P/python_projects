@@ -21,7 +21,7 @@
   {%for movie in movies:%}
   <div class="card" >
     <div class="front" style="background-image: url('{{movie.image_url}}');">
-        <p class="large">{{movie.ranking}}</p>
+        <p class="large">{{loop.index}}</p>
     </div>
     <div class="back">
       <div>
@@ -35,8 +35,8 @@
             {{movie.description}}
         </p>
 
-        <a href="#" class="button">Update</a>
-        <a href="#" class="button delete-button">Delete</a>
+        <a href="{{url_for('edit', id=movie.id)}}" class="button">Update</a>
+        <a href="{{url_for('delete', id=movie.id)}}" class="button delete-button">Delete</a>
       </div>
     </div>
   </div>

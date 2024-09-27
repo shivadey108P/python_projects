@@ -45,7 +45,7 @@ class Movie(db.Model):
     year : Mapped[int] = mapped_column(Integer, nullable=False)
     description : Mapped[str] = mapped_column(String(5000), nullable=False)
     rating : Mapped[float] = mapped_column(Float, nullable=False)
-    ranking : Mapped[int] = mapped_column(Integer, nullable=False)
+    ranking : Mapped[int] = mapped_column(Integer, nullable=True)
     review : Mapped[str] = mapped_column(String(1000), nullable=False)
     image_url : Mapped[str] = mapped_column(String(3000), nullable=False) 
     
@@ -72,6 +72,18 @@ def read_data():
         movies = db.session.execute(db.select(Movie).order_by(Movie.rating)).scalars().all()
         return movies
     
+def delete_data(id):
+    with app.app_context():
+        delete_record = db.get_or_404(Movie, id)
+        db.session.delete(delete_record)
+        db.session.commit()
+        
+def update_data(id,review, rating):
+    with app.app_context():
+        update_record =  db.get_or_404(Movie, id)
+        update_record.review = review
+        update_record.rating = rating
+        
 class AddMovie(FlaskForm):
     title = StringField(label='Movie Title', validators=[DataRequired(message="You can't leave this field empty")])
     year = DateField(label='Movie Release Date', validators=[DataRequired(message="You can't leave this field empty")])
@@ -82,6 +94,11 @@ class AddMovie(FlaskForm):
     image_url = StringField(label='Movie Image or Poster link', validators=[DataRequired(message="You can't leave this field empty")])
     submit = SubmitField(label='Add')
 
+class EditMovie(FlaskForm):
+    review = StringField(label='Movie Review', validators=[DataRequired(message="You can't leave this field empty")])
+    rating = DecimalField(label='Rating', validators=[DataRequired(message="You can't leave this field empty")])
+    submit = SubmitField(label='Edit')
+    
 @app.route("/", methods = ['GET', 'POST'])
 def home():
     all_movies = read_data()
@@ -108,6 +125,25 @@ def add():
                 image_url=image_url)
         return redirect(url_for('add', saved = True))
     return render_template('add.html', form = add_movie)
+
+@app.route('/edit', methods = ['GET', 'POST'])
+def edit():
+    movie_id = request.args.get('id')
+    movie_data = db.get_or_404(Movie, movie_id)
+    update_movie_data = EditMovie(obj=movie_data)
+    
+    if update_movie_data.validate_on_submit():
+        review = update_movie_data.review.data
+        rating = update_movie_data.rating.data
+        update_data(id=movie_id,rating=rating, review=review)
+        return redirect(url_for('edit', id=movie_id, saved=True))
+    return render_template('edit.html', form=update_movie_data)
+
+app.route('/delete')
+def delete():
+    movie_id = request.args.get('id')
+    delete_data(id=movie_id)
+    return redirect(url_for('home'))
 
 if __name__ == '__main__':
     app.run(debug=True)

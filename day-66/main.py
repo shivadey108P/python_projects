@@ -119,20 +119,57 @@ def add_new_cafe():
                 map_url = request.form.get('map_url'),
                 img_url = request.form.get('img_url'),
                 location = request.form.get('location'),
-                has_sockets = request.form.get('has_sockets'),
-                has_toilet = request.form.get('has_toilet'),
-                has_wifi = request.form.get('has_wifi'),
-                can_take_calls = request.form.get('can_take_calls'),
+                has_sockets = bool(request.form.get('has_sockets')),
+                has_toilet = bool(request.form.get('has_toilet')),
+                has_wifi = bool(request.form.get('has_wifi')),
+                can_take_calls = bool(request.form.get('can_take_calls')),
                 seats = request.form.get('seats'),
                 coffee_price = request.form.get('coffee_price')        
             )
             db.session.add(new_cafe)
             db.session.commit()
             return jsonify(response ={
-                "success": "Successfully added the data"
+                "success": "Successfully added the new cafe"
                 })
     except Exception as e:
         return jsonify(error= {'message': f'An error occurred- {str(e)}'}), 500
+    
+@app.route('/update-price/<int:cafe_id>', methods=['PATCH'])
+def patch_price(cafe_id):
+    new_price = request.args.get('new_price')
+    cafe = db.session.get(Cafe, cafe_id) 
+    if cafe:
+        cafe.coffee_price = new_price
+        db.session.commit()
+        return jsonify(response = {
+            'success': 'Successfully updated the new price'
+        }), 200
+    else:
+        return jsonify(error={
+            'Not Found' : f"Sorry a cafe with the given id:{cafe_id} was not found in database"
+        }), 404
+        
+@app.route('/report-closed/<int:cafe_id>', methods = ['DELETE'])
+def delete_cafe(cafe_id):
+    api_key = request.args.get('api_key')
+    defined_api_key = 'TopSecretKeyID'
+    if api_key == defined_api_key:
+        cafe = db.session.get(Cafe, cafe_id)
+        if cafe:
+            db.session.delete(cafe)
+            db.session.commit()
+            return jsonify(success = {
+                'message': 'Successfully deleted record'
+            }), 200
+        else:
+            return jsonify(error={
+                'Not found': f"Record not found with the cafe id:{cafe_id}"
+            }), 404
+    else:
+        return jsonify(error={
+            'Unauthorized': 'Please use a valid api-key!'
+        }), 403
 
 if __name__ == '__main__':
+    
     app.run(debug=True)

@@ -12,9 +12,11 @@
         "padx",
         "pady",
         "Promodoro",
+        "pwhash",
         "pyperclip",
         "sheety",
-        "spotipy"
+        "spotipy",
+        "werkzeug"
     ],
     "liveServer.settings.multiRootWorkspaceName": "Python_Projects"
 }

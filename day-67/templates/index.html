@@ -22,7 +22,8 @@
     <div class="col-md-10 col-lg-8 col-xl-7">
       <!-- Post preview-->
       {% for post in all_posts %}
-      <div class="post-preview">
+      <div class="d-flex justify-content-between align-items-center mb-4">
+      <div class="post-preview" d-flex justify-content-left align-items-center>
         <a href="{{ url_for('show_post', post_id=post.id) }}">
           <h2 class="post-title">{{ post.title }}</h2>
           <h3 class="post-subtitle">{{ post.subtitle }}</h3>
@@ -32,9 +33,12 @@
           Posted by
           <a href="#">{{post.author}}</a>
           on {{post.date}}
+          &nbsp;
         </p>
       </div>
-      <!-- Divider-->
+      <a href="{{url_for('delete_post', post_id=post.id)}}"><svg xmlns="http://www.w3.org/2000/svg" height="42px" viewBox="0 -960 960 960" width="42px" fill="#000000"><path d="M280-120q-33 0-56.5-23.5T200-200v-520h-40v-80h200v-40h240v40h200v80h-40v520q0 33-23.5 56.5T680-120H280Zm400-600H280v520h400v-520ZM360-280h80v-360h-80v360Zm160 0h80v-360h-80v360ZM280-720v520-520Z"/></svg></a>
+    </div>
+     <!-- Divider-->
       <hr class="my-4" />
       {% endfor %}
 
@@ -43,7 +47,7 @@
       <!-- TODO: Adding new posts -->
         <a
           class="btn btn-primary float-right"
-          href="TODO: add code to add_new_post here"
+          href="{{url_for('add_new_post')}}"
           >Create New Post</a
         >
       </div>

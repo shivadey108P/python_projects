@@ -4,6 +4,10 @@ import os
 
 USER_NAME = 'shivanarayandey'
 TOKEN = os.environ.get('PIXELA_TOKEN')
+<<<<<<< HEAD
+=======
+
+>>>>>>> bede96b2e9e503e7fbf1d6c2b22b7fa6e3d03eda
 pixela_endpoints = 'https://pixe.la/v1/users'
 GRAPH_ID = 'walk10k'
 

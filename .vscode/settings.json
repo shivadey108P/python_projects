@@ -7,10 +7,16 @@
     "jupyter.themeMatplotlibPlots": true,
     "material-icon-theme.enableLogging": true,
     "cSpell.words": [
+        "addrs",
+        "dotenv",
         "padx",
         "pady",
         "Promodoro",
+        "pwhash",
         "pyperclip",
-        "sheety"
-    ]
+        "sheety",
+        "spotipy",
+        "werkzeug"
+    ],
+    "liveServer.settings.multiRootWorkspaceName": "Python_Projects"
 }

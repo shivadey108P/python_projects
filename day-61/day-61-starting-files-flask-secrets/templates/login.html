@@ -1,0 +1,11 @@
+{%extends 'base.html'%}
+{% from 'bootstrap5/form.html' import render_form %}
+{%block title%}Login{%endblock%}
+<!-- This is where our form will go. -->
+{%block content%}
+	<div class="container w-50 py-5 my-5">
+		<h1>Login</h1>
+			{{render_form(form, novalidate=True, form_type='basic')}}
+	</div>
+{%endblock%}
+{{render_form(form)}}

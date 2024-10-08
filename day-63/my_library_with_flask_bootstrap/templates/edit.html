@@ -1,0 +1,36 @@
+{%extends 'base.html'%}
+{% from 'bootstrap5/form.html' import render_form %}
+
+{%block title%}Edit Details{%endblock%}
+{%block content%}
+<div class="container">
+    <div class="row">
+        <h1 class="py-5">Edit Details</h1>
+        {{render_form(form, novalidate=True, form_type='basic')}}
+    </div>
+</div>
+<div class="container py-3">
+    <a href="{{url_for('home')}}" class="btn btn-primary">My Library</a>
+</div>
+
+<!--Modal-->
+{%if request.args.get('saved')%}
+<div class="modal modal-sheet position-static d-block bg-body-secondary p-4 py-md-5" tabindex="-1" role="dialog" id="modalSheet" aria-labelledby="confirmationModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content rounded-4 shadow">
+        <div class="modal-header border-bottom-0">
+          <h1 class="modal-title fs-5">Details Saved</h1>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body py-0">
+          <p>Your changes have been saved! Would you like to stay on this page or return to your library?</p>
+        </div>
+        <div class="modal-footer flex-column align-items-stretch w-100 gap-2 pb-3 border-top-0">
+          <a href="{{url_for('home')}}" class="btn btn-lg btn-primary">Go to Library</a>
+          <a href="{{url_for('edit')}}" class="btn btn-lg btn-secondary" data-bs-dismiss="modal">Stay</a>
+        </div>
+      </div>
+    </div>
+  </div>
+{%endif%}
+{%endblock%}

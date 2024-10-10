@@ -1,0 +1,30 @@
+github commands:
+
+git init
+git status
+
+staging
+git add <file-name> or git add .
+to remove all add files for staging
+git rm --cached -r . 
+or
+git rm --chached -r <file-name>
+
+git commit -m 'initial commit>
+
+git push -u origin main
+
+cloning:
+
+git clone <https-url>
+
+
+merging:
+
+git branch <branch-name>
+
+git merge <branch-name>
+
+git checkout <branch-name>
+
+git push origin main -u (during merging)

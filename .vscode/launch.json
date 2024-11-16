@@ -5,6 +5,18 @@
             "name": "http://127.0.0.1:3000/day-60/test_file/index.html",
             "request": "launch",
             "url": "http://127.0.0.1:3000/day-60/test_file/index.html"
+        },
+        {
+            "type": "chrome",
+            "name": "http://127.0.0.1:3000/Web_Development/DOM%20Challenge%20Starting%20Files/index.html",
+            "request": "launch",
+            "url": "http://127.0.0.1:3000/Web_Development/DOM%20Challenge%20Starting%20Files/index.html"
+        },
+        {
+            "type": "chrome",
+            "name": "http://127.0.0.1:3000/Web_Development/Dicee+Challenge+-+Starting+Files/dicee.html",
+            "request": "launch",
+            "url": "http://127.0.0.1:3000/Web_Development/Dicee+Challenge+-+Starting+Files/dicee.html"
         }
     ]
 }

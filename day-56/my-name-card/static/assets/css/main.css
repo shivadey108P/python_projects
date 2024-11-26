@@ -2197,3 +2197,7 @@ input, select, textarea {
 .work_img{
 	border-radius: 25%;
 }
+
+.role-name{
+	color: #000;
+}

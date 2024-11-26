@@ -1,35 +1,50 @@
 from django.shortcuts import render
-from django.http import HttpResponse, HttpResponseNotFound
+from django.http import HttpResponse, HttpResponseNotFound, HttpResponseRedirect
+from django.urls import reverse
 
 # Create your views here.
-challenges = [
-    "Maintain proper diet and eat healthy food only, no Junk!",
-    "Do workouts on daily basis!",
-    "Complete Django course, study 1 section per day!",
-    "Walk 10k steps daily",
-    "Get a new python-full stalk web developer job",
-    "Start preparing for AWS Developer certification course!",
-    "Read 3 Canto in Bhavgwat-Gita daily."
-]
+challenges = {
+    'january': "Maintain proper diet and eat healthy food only, no Junk!",
+    'february': "Do workouts on daily basis!",
+    'march': "Complete Django course, study 1 section per day!",
+    'april': "Walk 10k steps daily",
+    'may': "Get a new python-full stalk web developer job",
+    'june': "Start preparing for AWS Developer certification course!",
+    'july': "Read 3 Canto in Bhavgwat-Gita daily.",
+    'august': 'Complete python DSA course',
+    'september': 'Start calisthenics training',
+    'october': 'Start the python data analytics course',
+    'november': 'Complete AWS Developer certification',
+    'december': 'Save money and renovate your house.'
+}
+
+def index(request):
+    months = list(challenges.keys())
+    list_items = ""
+    
+    for month in months:
+        month_path = reverse('month_challenge', args=[month])
+        list_items += f"<li> <a href='{month_path}'> {month.capitalize()} </a> </li><br>"
+    
+    response_data = f"<ul> {list_items} </ul>"
+    return HttpResponse(response_data)
+
+def monthly_challenges_by_number(request, month):
+    months = list(challenges.keys())
+    
+    if month > len(months):
+        return HttpResponseNotFound('<h1>404 - response not found!</h1><br> <p>Invalid Month!</p>')
+    
+    forward_month = months[month-1]
+    redirect_url = reverse('month_challenge', args=[forward_month])
+    return HttpResponseRedirect(redirect_url)
 
 def monthly_challenges(request, month):
     global challenges
-    new_challenge = None
-    if month.lower() == 'january':
-        new_challenge = challenges[0]
-    elif month.lower() == 'february':
-        new_challenge = challenges[1]
-    elif month.lower() == 'march':
-        new_challenge = challenges[2]
-    elif month.lower() == 'april':
-        new_challenge = challenges[3]
-    elif month.lower() == 'may':
-        new_challenge = challenges[4]
-    elif month.lower() == 'june':
-        new_challenge = challenges[5]
-    elif month.lower() == 'july':
-        new_challenge = challenges[6]
-    else:
-        return HttpResponseNotFound('This month challenge is not yet set')
-    
-    return HttpResponse(new_challenge)
+    try:
+        new_challenge = f"{challenges[month.lower()]}"
+        return render(request, 'challenges/challenge.html', {
+            "text": new_challenge
+        })
+    except KeyError:
+        return HttpResponseNotFound('<h1>404 - response not found!</h1><br> <p>Entered month is not correct! Please check for spellings.</p>')

@@ -1,0 +1,47 @@
+{% extends "base.html" %}
+
+{% load static %}
+
+{% block title %}{{post.title}}{%endblock %}
+
+{% block style %}
+<link rel="stylesheet" href="{% static 'blog/post_details.css' %}" />
+{% endblock style %}
+
+{% block content %}
+
+<div class="container">
+    <section id="summary">
+        <div class="row mx-1">
+            <div class="p-4 p-md-5 mb-4 rounded text-body-emphasis bg-body-secondary title-summary"
+    style="background-image: url('{% static "blog/images/" %}{{ post.image }}');">
+    <div class="col-lg-6 px-0">
+        <h1 class="display-4 fst-italic post-headings">{{ post.title }}</h1>
+        <p class="lead my-3 post-headings">
+            {{ post.excerpt }}
+        </p>
+    </div>
+</div>
+
+        </div>
+    </section>
+
+    <main class="mx-2 card-view">
+        <div class="row">
+            <div class="col-lg-12 border-bottom mb-3">
+                <p>
+                    <time class="date-text">{{post.date}}</time>
+                <address class="fw-bold d-inline">{{post.author|title}}</address>
+                </p>
+            </div>
+            <div class="col-lg-12">
+                <p>
+                    {{post.content|linebreaks}}
+                </p>
+            </div>
+        </div>
+    </main>
+
+</div>
+
+{% endblock %}

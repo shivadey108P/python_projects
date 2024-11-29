@@ -1,0 +1,7 @@
+.card-view{
+    transform-origin: center;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.25);
+    border-radius: 12px;
+    background-color: #14171b;
+    margin: 2rem 3rem 2rem 3rem;
+}

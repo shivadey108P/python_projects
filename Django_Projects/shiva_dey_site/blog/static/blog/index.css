@@ -1,0 +1,94 @@
+#welcome{
+    /* background: linear-gradient(to right top, #0d6efd, #390281); */
+    padding: 2rem 12%;
+  }
+
+  
+  #welcome header {
+    display: flex;
+    align-items: flex-start;
+    margin: 3rem auto;
+  }
+  
+  #welcome img {
+    width: 10rem;
+    height: 13rem;
+    object-fit: cover;
+    object-position: top;
+    border: 5px solid  ;
+    border-radius: 12px;
+    background-color: #f3cc9f;
+    transform: rotateZ(-5deg);
+    box-shadow: 0 2px 8px rgba(250, 245, 245, 0.25);
+  }
+  
+  #welcome h2 {
+    font-size: 3.5rem;
+    margin: 0 0 0 2rem;
+    color: #d6cbcb;
+    width: 10rem;
+  }
+  
+  #welcome p {
+    color: white;
+    font-size: 1.5rem;
+  }
+  
+  #latest-posts {
+    background-color: white;
+    border-radius: 12px;
+    width: 60rem;
+    margin: 0 auto 0 auto;
+    box-shadow: 1px 1px 12px rgba(0, 0, 0, 0.4);
+  }
+  
+  #latest-posts h2 {
+    text-align: center;
+  }
+  
+  
+
+  
+  #about {
+    text-align: center;
+    padding: 2rem;
+  }
+  
+  #about h2 {
+    font-size: 3rem;
+  }
+  
+  p {
+    font-size: 1.5rem;
+    color: white;
+  }
+.text-body-emphasis{
+    color: white !important
+  }
+
+h3{
+    color: white;
+}
+
+.hover-about:hover,
+.hover-about:active {
+  transform: scale(1.1);
+  background-color: #0d6efd;
+  color: rgb(37, 37, 37);
+  border-radius: 0.376rem;
+  padding: 0.2rem
+}
+
+.hover-me:hover,
+.hover-me:active {
+  transform: scale(1.1);
+  background-color: #0d6efd;
+  color: rgb(37, 37, 37);
+  border-radius: 0.376rem;
+  padding: 0.2rem
+}
+
+
+.hover-about,.hover-me{
+    transition: all 0.2s ease;
+}

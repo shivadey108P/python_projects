@@ -1,0 +1,38 @@
+ul{
+    list-style: none;
+    margin: 2rem auto;
+    width: 80%;
+    max-width: 25rem;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.26);
+    padding: 1rem;
+    border-radius: 12px;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    height: 32rem;
+    background-color: aliceblue;
+}
+
+li{
+    margin: 1rem;
+    text-align: center;
+    font-size: 1.5rem;
+    border-bottom: 1px solid #ccc;
+    padding-bottom: 1rem;
+}
+
+li:last-of-type,
+li:nth-of-type(6){
+    border-bottom: none;
+}
+
+
+li a{
+    text-decoration: none;
+    color: #706e6e;
+}
+
+li a:hover,
+li a:active{
+    color: #bd1bbd;
+}

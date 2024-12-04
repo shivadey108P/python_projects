@@ -24,16 +24,29 @@
 }
 
 .card-view{
-    box-shadow: rgba(0, 0, 0, 0.25);
+    box-shadow: #00000040;
 }
 .card-view {
     background-color:#14171b;
     padding: 20px;
     border-radius: 10px;
-    box-shadow: 0 4px 8px rgba(48, 47, 47, 0.2);
+    box-shadow: 0 4px 8px #302f2f33;
 }
 
 .date-text{
     font-style: italic;
+}
+
+.card-view a{
+    color: white;
+    text-decoration: none;
+}
+
+.tag-line{
+    font-size: 16px;
+    background-color:#14171B !important;
+    padding: 0.5rem 1rem;
+    font-weight: 700;
+    border-radius: 12px;
 }
 

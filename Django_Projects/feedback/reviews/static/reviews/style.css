@@ -1,0 +1,140 @@
+.feedback{
+    box-shadow:0 2px 8px rgba(0, 0, 0, 0.26);
+    margin: 3rem auto;
+    width: 90%;
+    max-width: 30rem;
+    padding: 0.5rem 2rem;
+    background-color: #997C70;
+    border-radius: 0.5rem;
+    width: fit-content;
+}
+
+.feedback h1,p{
+    color: #FDF7F4;
+}
+
+html{
+    background-color: #FDF7F4;
+}
+
+body{
+    font-family: sans-serif;
+    margin: 0;
+}
+form{
+    margin: 3rem auto;
+    width: 90%;
+    max-width: 30rem;
+    padding: 1rem;
+    border-radius: 12px;
+    background-color: #8EB486;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.26);
+}
+
+button{
+    cursor: pointer;
+    padding: 0.5rem 1.5rem;
+    border-radius: 6px;
+    background-color: #685752;
+    color: #FDF7F4;
+    border: 1px solid #685752;
+    width: fit-content;
+    display: block;
+    margin: 0 auto;
+}
+
+button:hover, button:active{
+    background-color: #997C70;
+    border: 1px solid #997C70;
+}
+
+footer{
+    margin: 3rem auto;
+    width: fit-content;
+    max-width: 50%;
+}
+hr{
+    max-width: 90%;
+    background-color: #685752;
+    height: 1px;
+}
+
+header nav a{
+    text-decoration: none;
+    color: #FDF7F4;
+    background-color: #685752;
+    margin: 0.5rem 0.5rem;
+    margin-top: 12px;
+    padding: 0.5rem 0.7rem;
+    border-radius: 6px;
+    margin-left: 3.2rem;
+} 
+
+header nav a:hover,
+header nav a:active{
+    background-color: #997C70;
+    border: 1px solid #997C70;
+}
+
+header{
+    padding: 1rem;
+    width: 90%;
+} 
+
+.footer-container{
+    padding: 0.5rem;
+    background-color: #ffffff;
+    color: #685752;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.26);
+}
+
+.header-container{
+    padding: 0.5rem;
+    background-color: #ffffff;
+    color: #685752;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.26);
+}
+
+.form-control{
+    margin-bottom: 1rem;
+}
+
+.form-control input{
+    font: inherit;
+    padding: 0.25rem;
+    border-radius: 4px;
+    border: 1px solid #997C70;
+    display: block;
+    width: 20rem;
+}
+
+.form-control input:focus{
+    border-color: #685752;
+    outline: none;
+    background-color: #997C70;
+    color: #FDF7F4;
+}
+
+.form-control label{
+    font-weight: bold;
+    display: block;
+    color: #685752;
+    margin-top: 1rem;
+    margin-bottom: 0.3rem;
+}
+
+.errorlist{
+    list-style: none;
+    margin: 0.5rem 0;
+    padding: 0;
+    color: #df0c0c71;
+}
+
+.errors input{
+    border-color: df0c0c71;
+    background-color: #f6cbcb;
+}
+
+.errors label{
+    color: #df0c0c71;
+}

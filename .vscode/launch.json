@@ -1,22 +1,41 @@
 {
-    "configurations": [
+  "configurations": [
+    {
+      "type": "chrome",
+      "name": "http://127.0.0.1:3000/day-60/test_file/index.html",
+      "request": "launch",
+      "url": "http://127.0.0.1:3000/day-60/test_file/index.html"
+    },
+    {
+      "type": "chrome",
+      "name": "http://127.0.0.1:3000/Web_Development/DOM%20Challenge%20Starting%20Files/index.html",
+      "request": "launch",
+      "url": "http://127.0.0.1:3000/Web_Development/DOM%20Challenge%20Starting%20Files/index.html"
+    },
+    {
+      "type": "chrome",
+      "name": "http://127.0.0.1:3000/Web_Development/Dicee+Challenge+-+Starting+Files/dicee.html",
+      "request": "launch",
+      "url": "http://127.0.0.1:3000/Web_Development/Dicee+Challenge+-+Starting+Files/dicee.html"
+    },
+    {
+      "name": "C/C++ Runner: Debug Session",
+      "type": "cppdbg",
+      "request": "launch",
+      "args": [],
+      "stopAtEntry": false,
+      "externalConsole": true,
+      "cwd": "c:/Users/n523197/PycharmProjects/pythonProject/C_C++_DSA_Programming/c_basics",
+      "program": "c:/Users/n523197/PycharmProjects/pythonProject/C_C++_DSA_Programming/c_basics/build/Debug/outDebug",
+      "MIMode": "gdb",
+      "miDebuggerPath": "gdb",
+      "setupCommands": [
         {
-            "type": "chrome",
-            "name": "http://127.0.0.1:3000/day-60/test_file/index.html",
-            "request": "launch",
-            "url": "http://127.0.0.1:3000/day-60/test_file/index.html"
-        },
-        {
-            "type": "chrome",
-            "name": "http://127.0.0.1:3000/Web_Development/DOM%20Challenge%20Starting%20Files/index.html",
-            "request": "launch",
-            "url": "http://127.0.0.1:3000/Web_Development/DOM%20Challenge%20Starting%20Files/index.html"
-        },
-        {
-            "type": "chrome",
-            "name": "http://127.0.0.1:3000/Web_Development/Dicee+Challenge+-+Starting+Files/dicee.html",
-            "request": "launch",
-            "url": "http://127.0.0.1:3000/Web_Development/Dicee+Challenge+-+Starting+Files/dicee.html"
+          "description": "Enable pretty-printing for gdb",
+          "text": "-enable-pretty-printing",
+          "ignoreFailures": true
         }
-    ]
+      ]
+    }
+  ]
 }

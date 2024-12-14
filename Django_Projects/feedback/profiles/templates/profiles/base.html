@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}Your Profile{% endblock %} </title>
+    <link rel="stylesheet" href="{%static 'profiles/style.css'%}">
+    {% block style %}{% endblock%}
+</head>
+
+<body>
+    <div class='header-container'>
+        <header class='nav-section'>
+            <nav class="nav-headings">
+                <a href="/profiles">Profile</a>
+            </nav>
+            <nav class="nav-headings">
+                <a href="/profiles/list">Users</a>
+            </nav>
+        </header>
+        <hr>
+    </div>
+    {% block content %}{% endblock %}
+
+    <div class='footer-container'>
+        <hr class='footer-hr'>
+        <footer>
+            &copy;Shiva Dey {{year}}
+        </footer>
+    </div>
+    {% block script %} {%endblock%}
+</body>
+
+</html>

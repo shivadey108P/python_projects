@@ -1,0 +1,13 @@
+{% extends 'profiles/base.html' %}
+
+{% block title %}
+Create a profile
+{%endblock%}
+
+{% block content %}
+<form action="/profiles/" method="POST" enctype="multipart/form-data">
+    {% csrf_token %}
+    {{form}}
+    <button>Upload!</button>
+</form>
+{%endblock%}

@@ -3,7 +3,7 @@
   "workbench.preferredHighContrastColorTheme": "Default Dark Modern",
   "workbench.preferredHighContrastLightColorTheme": "Default Dark Modern",
   "workbench.preferredLightColorTheme": "Default Dark Modern",
-  "workbench.iconTheme": "material-icon-theme",
+  "workbench.iconTheme": "vscode-icons",
   "jupyter.themeMatplotlibPlots": true,
   "material-icon-theme.enableLogging": true,
   "cSpell.words": [

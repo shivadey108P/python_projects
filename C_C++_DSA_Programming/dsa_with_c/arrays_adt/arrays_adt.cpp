@@ -33,7 +33,7 @@ void insert(struct Array *arr, int index, int key)
     {
         for (int i = arr->length; i >= index; i--)
         {
-            arr->A[i + 1] = arr->A[i];
+            arr->A[i] = arr->A[i + 1];
         }
         arr->A[index] = key;
         arr->length++;
@@ -128,7 +128,8 @@ int recursionBinarySearch(int a[], int left, int right, int value)
 
 void sortArray(struct Array *arr)
 {
-    for (int i = 0; i < arr->length - 1; i++)
+    int len = arr->length - 1;
+    for (int i = 0; i < len; i++)
     {
         for (int j = 0; j < arr->length - i - 1; j++)
         {
@@ -222,7 +223,7 @@ void reverse_array(struct Array *arr)
     int j = 0;
     int *B;
     B = (int *)malloc(arr->length * sizeof(int));
-    for (i, j; i >= 0; i--, j++)
+    for (; i >= 0; i--, j++)
     {
         B[j] = arr->A[i];
     }
@@ -238,7 +239,7 @@ void reverse_array(struct Array *arr)
 void reverse_swap(struct Array *arr)
 {
     int i = 0, j = arr->length - 1;
-    for (i, j; i < j; i++, j--)
+    for (; i < j; i++, j--)
     {
         swap(&arr->A[i], &arr->A[j]);
     }
@@ -277,6 +278,44 @@ void rearrange_array(struct Array *arr)
     }
 }
 
+void left_shift(struct Array *arr)
+{
+    for (int i = 0; i < arr->length - 1; i++)
+    {
+        arr->A[i] = arr->A[i + 1];
+    }
+    arr->A[arr->length - 1] = 0;
+}
+
+void left_rotate(struct Array *arr)
+{
+    int first = arr->A[0];
+    for (int i = 0; i < arr->length - 1; i++)
+    {
+        arr->A[i] = arr->A[i + 1];
+    }
+    arr->A[arr->length - 1] = first;
+}
+
+void right_shift(struct Array *arr)
+{
+    for (int i = arr->length - 1; i > 0 - 1; i--)
+    {
+        arr->A[i] = arr->A[i - 1];
+    }
+    arr->A[0] = 0;
+}
+
+void right_rotate(struct Array *arr)
+{
+    int last_element = arr->A[arr->length - 1];
+    for (int i = arr->length - 1; i > 0; i--)
+    {
+        arr->A[i] = arr->A[i - 1];
+    }
+    arr->A[0] = last_element;
+}
+
 int main()
 {
     /*struct Array arr;
@@ -295,7 +334,7 @@ int main()
     // free(arr.A);
 
     // struct Array arr = { {8,7,3,15,5,4,17,16,2}, 10, 9 };
-    struct Array arr = {{2, -3, 5, -6, 7, -1}, 10, 6};
+    struct Array arr = {{1, 2, 3, 4, 5}, 10, 5};
     // append(&arr, 6);
     // insert(&arr, 3, 10);
     // int delete_index = 1;
@@ -312,13 +351,22 @@ int main()
     // cout << max_value(arr) << endl;
     // cout << min_value(arr) << endl;
     // cout << sum_of_values(arr) << endl;
-    ////cout << avg_of_values(arr) << endl;
+    // cout << avg_of_values(arr) << endl;
     // printf("%f \n", avg_of_values(arr));
 
     // printf("%s \n", is_sorted(arr)? "true":"false");
     // reverse_swap(&arr);
     // inserted_sorted_value(&arr, 4);
-    rearrange_array(&arr);
+    // rearrange_array(&arr);
+    // display_array(arr);
+    // left_rotate(&arr);
+    // left_rotate(&arr);
+    // left_rotate(&arr);
+
+    display_array(arr);
+    right_rotate(&arr);
+    right_rotate(&arr);
+    right_rotate(&arr);
     display_array(arr);
 
     return 0;

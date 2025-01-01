@@ -434,66 +434,6 @@ struct Array *diff_array(struct Array *arr1, struct Array *arr2)
 
 int main()
 {
-    /*struct Array arr;
-    cout << "Enter the size of the array : ";
-    cin>>arr.size;
 
-    arr.A = (int*)malloc(arr.size * sizeof(int));
-
-    cout << "Enter the length of array to display: ";
-    cin >> arr.length;
-    cout << endl << "Enter the elements for the array below: " << endl;
-    for (int i = 0; i < arr.length; i++) {
-        cin >> arr.A[i];
-    }*/
-
-    // free(arr.A);
-
-    // struct Array arr = { {8,7,3,15,5,4,17,16,2}, 10, 9 };
-    // struct Array arr = {{1, 2, 3, 4, 5}, 10, 5};
-    // append(&arr, 6);
-    // insert(&arr, 3, 10);
-    // int delete_index = 1;
-    // cout << "Deleted value at index " << delete_index << " is " << delete_element(&arr,delete_index) << endl;
-    // cout << LinearSearch(&arr, 15) << endl;
-    /*display_array(arr);
-    sortArray(&arr);
-    display_array(arr);
-    cout << BinarySearch(arr, 8) << endl;
-    cout << recursionBinarySearch(arr.A, 0, arr.length-1, 8) << endl;*/
-
-    // cout << get_value(arr, 5) << endl;;
-    // set_value(&arr, 3, 20);
-    // cout << max_value(arr) << endl;
-    // cout << min_value(arr) << endl;
-    // cout << sum_of_values(arr) << endl;
-    // cout << avg_of_values(arr) << endl;
-    // printf("%f \n", avg_of_values(arr));
-
-    // printf("%s \n", is_sorted(arr)? "true":"false");
-    // reverse_swap(&arr);
-    // inserted_sorted_value(&arr, 4);
-    // rearrange_array(&arr);
-    // display_array(arr);
-    // left_rotate(&arr);
-    // left_rotate(&arr);
-    // left_rotate(&arr);
-
-    // display_array(arr);
-    // right_rotate(&arr);
-    // right_rotate(&arr);
-    // right_rotate(&arr);
-    // display_array(arr);
-
-    struct Array arr1 = {{2, 4, 6, 8, 10}, 10, 5};
-    struct Array arr2 = {{3, 4, 7, 8, 11}, 10, 5};
-    struct Array *arr3;
-    // arr3 = merge_array(&arr1, &arr2);
-    // arr3 = union_array(&arr1, &arr2);
-    // arr3 = intersect_array(&arr1, &arr2);
-    arr3 = diff_array(&arr2, &arr1);
-    display_array(*arr3);
-
-    free(arr3);
     return 0;
 }

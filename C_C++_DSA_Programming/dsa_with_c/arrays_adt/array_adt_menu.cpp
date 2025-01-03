@@ -5,13 +5,14 @@ using namespace std;
 
 struct Array
 {
-    int A[10];
+    int *A;
     int size;
     int length;
 };
 
 void display_array(struct Array arr)
 {
+    cout << "Elements in the array are: " << endl;
     for (int i = 0; i < arr.length; i++)
     {
         cout << arr.A[i] << " ";
@@ -31,12 +32,16 @@ void insert(struct Array *arr, int index, int key)
 {
     if (index >= 0 && index <= arr->length)
     {
-        for (int i = arr->length; i >= index; i--)
+        for (int i = arr->length - 1; i >= index; i--)
         {
-            arr->A[i] = arr->A[i + 1];
+            arr->A[i + 1] = arr->A[i];
         }
         arr->A[index] = key;
         arr->length++;
+    }
+    else
+    {
+        cout << "Entered index is not valid!" << endl;
     }
 }
 
@@ -434,6 +439,90 @@ struct Array *diff_array(struct Array *arr1, struct Array *arr2)
 
 int main()
 {
+    struct Array arr;
+    int choice;
+    int element, index;
+    cout << "Enter the size of the array you want to create: " << endl;
+    cin >> arr.size;
+    arr.A = (int *)malloc(arr.size * sizeof(int));
+    arr.length = 0;
+    do
+    {
+        cout << "--------------------------------------------------" << endl;
+        cout << endl
+             << "Menu: " << endl;
+        cout << "1. Add an element" << endl;
+        cout << "2. Insert an element" << endl;
+        cout << "3. Delete an element" << endl;
+        cout << "4. Linear search" << endl;
+        cout << "5. Binary search" << endl;
+        cout << "6. Sum of current elements" << endl;
+        cout << "7. Avg of current elements" << endl;
+        cout << "8. Check if elements are sorted!" << endl;
+        cout << "9. Bubble sort elements" << endl;
+        cout << "10. Display" << endl;
+        cout << "11. Exit" << endl;
+        cout << endl
+             << "Enter your choice (number): " << endl;
+        cin >> choice;
+        switch (choice)
+        {
+        case 1:
+            cout << "Enter the element:" << endl;
+            cin >> element;
+            append(&arr, element);
+            break;
+        case 2:
+            cout << "Enter index: ";
+            cin >> index;
+            cout << endl;
+            cout << "Enter value: ";
+            cin >> element;
+            cout << endl;
+            insert(&arr, index, element);
+            break;
+        case 3:
+            cout << "Enter index to delete an element: ";
+            cin >> index;
+            delete_element(&arr, index);
+            break;
+        case 4:
+            cout << "Enter the value to search it: ";
+            cin >> element;
+            cout << "Index of the element is: " << LinearSearch(&arr, element) << endl;
+            break;
+        case 5:
+            cout << "Enter the value to search it: ";
+            cin >> element;
+            cout << "Index of the element is: " << BinarySearch(arr, element) << endl;
+            break;
+        case 6:
+            cout << "Sum of all values: " << sum_of_values(arr) << endl;
+            break;
+        case 7:
+            cout << "Average of all values: " << avg_of_values(arr) << endl;
+            break;
+        case 8:
+            if (is_sorted(arr))
+            {
+                cout << "Is sorted!" << endl;
+            }
+            else
+            {
+                cout << "Not sorted!" << endl;
+            }
+            break;
+        case 9:
+            sortArray(&arr);
+            display_array(arr);
+            break;
+        case 10:
+            display_array(arr);
+            break;
+        default:
+            break;
+        }
+    } while (choice < 11);
 
     return 0;
 }

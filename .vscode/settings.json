@@ -81,7 +81,9 @@
   "files.associations": {
     "*.html": "html",
     "*.cpp": "cpp",
-    "iostream": "cpp"
+    "iostream": "cpp",
+    "*.tcc": "cpp",
+    "string": "cpp"
   },
   "C_Cpp.errorSquiggles": "disabled"
 }

@@ -433,7 +433,7 @@ int main()
     // char A[] = "findings";
     // char B[] = "Painting";
     /*   int i = 0;
-       cout << get_length(A) << endl;*/
+    cout << get_length(A) << endl;*/
     // change_cases(A);
     // printf("%s\n", A);
     /*count_vowels_and_consonants(A);

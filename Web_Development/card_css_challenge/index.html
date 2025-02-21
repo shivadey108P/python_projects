@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CSS card challenge</title>
+    <style>
+        * {
+            font-family: sans-serif;
+            color: black;
+            background-color: aliceblue;
+        }
+
+        .card_body {
+            background-color: white;
+            padding: 10px;
+            margin: 10px;
+            height: 530px;
+            width: 300px;
+            display: block;
+            margin: auto;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.25);
+            border-radius: 0.75rem;
+        }
+
+        .img {
+            background-color: white;
+        }
+
+        .img>img {
+            height: 300px;
+            border-radius: 0.75rem;
+            display: flex;
+            margin: auto;
+            background-color: white;
+        }
+
+        .pill_section {
+            display: flex;
+            margin-top: 10px;
+            background-color: white;
+        }
+
+        .pill {
+            border: 1px solid grey;
+            margin-left: 15px;
+            padding: 5px;
+            border-radius: 2.5rem;
+            color: grey;
+            background-color: white;
+        }
+
+        .text_section {
+            margin-left: 15px;
+            background-color: white;
+        }
+
+        button {
+            display: flex;
+            margin: auto;
+            padding: 10px 20px;
+            border-radius: 2.5rem;
+            border: none;
+            color: rgb(196, 145, 67);
+            background-color: blanchedalmond;
+            font-weight: 700;
+        }
+
+        p {
+            color: grey;
+            background-color: white;
+        }
+
+        h2 {
+            background-color: white;
+        }
+
+        .btn {
+            background-color: white;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="card_body">
+        <div class="img">
+            <img src="https://png.pngtree.com/png-clipart/20240709/original/pngtree-the-cute-astronaut-is-riding-the-big-waffle-ship-and-rowing-png-image_15519626.png"
+                alt="">
+        </div>
+        <div class="pill_section">
+            <div class="pill">
+                Nature
+            </div>
+            <div class="pill">
+                Lake
+            </div>
+        </div>
+        <div class="text_section">
+            <h2>Chandan River</h2>
+            <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Ullam eaque dolorum repellat dolores eveniet
+                explicabo.</p>
+        </div>
+        <button>Read More</button>
+    </div>
+
+</body>
+
+</html>

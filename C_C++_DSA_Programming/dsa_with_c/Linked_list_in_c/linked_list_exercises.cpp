@@ -5,7 +5,7 @@ struct Node
 {
 	int data;
 	struct Node *next;
-} *first = NULL;
+} *first = NULL, *second = NULL, *third = NULL;
 
 void create(int A[], int n)
 {
@@ -15,6 +15,25 @@ void create(int A[], int n)
 	first->data = A[0];
 	first->next = NULL;
 	last = first;
+
+	for (i = 1; i < n; i++)
+	{
+		t = (struct Node *)malloc(sizeof(struct Node));
+		t->data = A[i];
+		t->next = NULL;
+		last->next = t;
+		last = t;
+	}
+}
+
+void create2(int A[], int n)
+{
+	struct Node *t, *last;
+	int i;
+	second = (struct Node *)malloc(sizeof(struct Node));
+	second->data = A[0];
+	second->next = NULL;
+	last = second;
 
 	for (i = 1; i < n; i++)
 	{
@@ -291,16 +310,137 @@ void removeDuplicates(struct Node *p)
 	}
 }
 
+void reverse_ll_using_data(struct Node *p)
+{
+	int length = count(p);
+	int *A = (int *)malloc(sizeof(int) * length);
+	struct Node *q = p;
+	int i = 0;
+	while (q)
+	{
+		A[i] = q->data;
+		q = q->next;
+		i++;
+	}
+	q = p;
+	i--;
+	while (q)
+	{
+		q->data = A[i];
+		q = q->next;
+		i--;
+	}
+}
+
+void reverse_ll_using_node(struct Node *p)
+{
+	struct Node *q = NULL, *r = NULL;
+	while (p)
+	{
+		r = q;
+		q = p;
+		p = p->next;
+		q->next = r;
+	}
+	first = q;
+}
+
+void reverse_ll_using_node_recursion(struct Node *p, struct Node *q)
+{
+	if (p)
+	{
+		reverse_ll_using_node_recursion(p->next, p);
+		p->next = q;
+	}
+	else
+	{
+		first = q;
+	}
+}
+
+void concat(struct Node *p, struct Node *q)
+{
+	third = p;
+	while (p->next != NULL)
+	{
+		p = p->next;
+	}
+	p->next = q;
+}
+
+void merge(struct Node *p, struct Node *q)
+{
+	struct Node *last = NULL;
+	if (p->data < q->data)
+	{
+		third = last = p;
+		p = p->next;
+		third->next = NULL;
+	}
+	else
+	{
+		third = last = q;
+		q = q->next;
+		third->next = NULL;
+	}
+
+	while (p && q)
+	{
+		if (p->data < q->data)
+		{
+			last->next = p;
+			last = p;
+			p = p->next;
+			last->next = NULL;
+		}
+		else
+		{
+			last->next = q;
+			last = q;
+			q = q->next;
+			last->next = NULL;
+		}
+
+		if (p)
+			last->next = p;
+		if (q)
+			last->next = q;
+	}
+}
+
+bool isLoop(struct Node *f)
+{
+	struct Node *q, *p;
+	p = q = f;
+	do
+	{
+		p = p->next;
+		q = q->next;
+		q = q != NULL ? q->next : q;
+	} while (p && q && p != q);
+	return p == q ? true : false;
+}
+
 int main()
 {
-	// struct Node* temp;
-	int A[] = {10, 10, 10, 20, 20, 20, 30, 40, 50};
+	struct Node *t1, *t2;
+	int A[] = {10, 20, 30, 40, 50};
+	int B[] = {5, 15, 25, 35, 45};
 
-	create(A, 9);
+	create(A, 5);
 
-	removeDuplicates(first);
+	// t1 = first->next->next;
+	// t2 = first->next->next->next->next;
+	// t2->next = t1;
 
-	display(first);
+	if (isLoop(first))
+	{
+		cout << "The linked list is in loop" << endl;
+	}
+	else
+	{
+		cout << "It's not in loop" << endl;
+	}
 
 	return 0;
 }

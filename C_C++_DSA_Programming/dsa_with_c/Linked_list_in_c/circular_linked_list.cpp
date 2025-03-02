@@ -14,6 +14,7 @@ public:
     CircularLinkedList(int A[], int n);
     ~CircularLinkedList();
     void display();
+    void rec_display();
 };
 
 CircularLinkedList::CircularLinkedList(int A[], int n)
@@ -54,6 +55,16 @@ void CircularLinkedList::display()
         h = h->next;
     } while (h != head);
     cout << endl;
+}
+
+void CircularLinkedList::rec_display()
+{
+    static int flag = 0;
+    Node *h = head;
+    if(h != head && flag ==1)
+    {
+        
+    }
 }
 
 int main()

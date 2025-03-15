@@ -15,12 +15,14 @@ private:
     void helper(Node *p);
 
 public:
+    CircularLinkedList() { head = NULL; };
     CircularLinkedList(int A[], int n);
     ~CircularLinkedList();
     void display();
     void rec_display();
     void insert(int index, int value);
     int length();
+    int delete_node(int index);
 };
 
 CircularLinkedList::CircularLinkedList(int A[], int n)
@@ -114,17 +116,24 @@ void CircularLinkedList::insert(int index, int value)
     Node *p = head, *temp;
     temp = new Node;
     temp->data = value;
-    temp->next = NULL;
 
     if (index == 0)
     {
-        temp->next = head;
-        while (p->next != head)
+        if (head == NULL)
         {
-            p = p->next;
+            head = temp;
+            head->next = head;
         }
-        p->next = temp;
-        head = temp;
+        else
+        {
+            while (p->next != head)
+            {
+                p = p->next;
+            }
+            p->next = temp;
+            temp->next = head;
+            head = temp;
+        }
     }
     else
     {
@@ -137,10 +146,59 @@ void CircularLinkedList::insert(int index, int value)
     }
 }
 
+int CircularLinkedList::delete_node(int index)
+{
+    Node *q, *p = head;
+    int x = -1;
+    if (index < 0 || index > length())
+    {
+        cout << "Invalid Index!" << endl;
+        return x;
+    }
+
+    if (index == 1)
+    {
+        while (p->next != head)
+        {
+            p = p->next;
+        }
+        x = head->data;
+        if (head == p)
+        {
+            delete head;
+            head = NULL;
+        }
+        else
+        {
+            p->next = head->next;
+            delete head;
+            head = p->next;
+        }
+    }
+    else
+    {
+        for (int i = 0; i < index - 2; i++)
+        {
+            p = p->next;
+        }
+        q = p->next;
+        p->next = q->next;
+        x = q->data;
+        delete q;
+    }
+    return x;
+}
+
 int main()
 {
     int A[] = {1, 2, 3, 4, 5};
     CircularLinkedList c(A, 5);
-    c.insert(0, 10);
+    // CircularLinkedList c;
+    // c.insert(0, 10);
+    // c.insert(1, 20);
+    // c.insert(2, 30);
+
+    cout << "Deleted Element: " << c.delete_node(5) << endl;
+
     c.rec_display();
 }
